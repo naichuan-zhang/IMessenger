@@ -13,6 +13,12 @@ android {
         versionCode 1
         versionName "1.0"
 
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
+        }
+
+        useLibrary 'org.apache.http.legacy'
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,4 +42,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation "org.jetbrains.anko:anko:$anko_version"
+    compile 'cn.bmob.android:bmob-sdk:3.5.5'
 }
