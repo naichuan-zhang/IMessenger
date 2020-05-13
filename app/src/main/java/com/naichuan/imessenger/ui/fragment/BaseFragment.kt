@@ -1,4 +1,4 @@
-package com.naichuan.imessenger.base
+package com.naichuan.imessenger.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

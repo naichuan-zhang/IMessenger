@@ -1,7 +1,6 @@
 package com.naichuan.imessenger.ui.activity
 
 import com.naichuan.imessenger.R
-import com.naichuan.imessenger.base.BaseActivity
 import com.naichuan.imessenger.contract.RegisterContract
 import com.naichuan.imessenger.presenter.RegisterPresenter
 import kotlinx.android.synthetic.main.activity_register.*
@@ -52,7 +51,13 @@ class RegisterActivity: BaseActivity(), RegisterContract.View {
 
     override fun onRegisterSuccess() {
         dismissProgressDialog()
+        toast("注册成功！")
         finish()
+    }
+
+    override fun onUserAlreadyExists() {
+        dismissProgressDialog()
+        toast("该用户名已存在！")
     }
 
     override fun onRegisterFailed() {

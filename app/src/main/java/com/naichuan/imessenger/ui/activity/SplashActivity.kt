@@ -2,7 +2,6 @@ package com.naichuan.imessenger.ui.activity
 
 import android.os.Handler
 import com.naichuan.imessenger.R
-import com.naichuan.imessenger.base.BaseActivity
 import com.naichuan.imessenger.contract.SplashContract
 import com.naichuan.imessenger.presenter.SplashPresenter
 import org.jetbrains.anko.startActivity

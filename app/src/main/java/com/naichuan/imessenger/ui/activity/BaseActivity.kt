@@ -1,4 +1,4 @@
-package com.naichuan.imessenger.base
+package com.naichuan.imessenger.ui.activity
 
 import android.app.ProgressDialog
 import android.content.Context

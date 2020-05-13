@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tabMessage"
+        icon="@drawable/ic_message_black_24dp"
+        title="消息" />
+    <tab
+        id="@+id/tabContact"
+        icon="@drawable/ic_perm_contact_calendar_black_24dp"
+        title="联系人" />
+    <tab
+        id="@+id/tabActivity"
+        icon="@drawable/ic_activity_black_24dp"
+        title="动态" />
+</tabs>

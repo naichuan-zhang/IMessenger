@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.naichuan.imessenger.R
-import com.naichuan.imessenger.base.BaseActivity
 import com.naichuan.imessenger.contract.LoginContract
 import com.naichuan.imessenger.presenter.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
