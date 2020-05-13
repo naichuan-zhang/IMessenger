@@ -1,5 +1,6 @@
 package com.naichuan.imessenger.ui.fragment
 
+import android.view.View
 import com.naichuan.imessenger.R
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -10,6 +11,7 @@ class ConversationFragment: BaseFragment() {
 
     override fun initData() {
         super.initData()
-        toolbar.title = "消息"
+        toolbarTitle.text  = "消息"
+        addContact.visibility = View.GONE
     }
 }

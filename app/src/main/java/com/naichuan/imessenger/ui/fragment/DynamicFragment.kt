@@ -1,5 +1,6 @@
 package com.naichuan.imessenger.ui.fragment
 
+import android.view.View
 import com.hyphenate.chat.EMClient
 import com.naichuan.imessenger.R
 import com.naichuan.imessenger.adapter.EMCallBackAdapter
@@ -17,10 +18,12 @@ class DynamicFragment: BaseFragment() {
 
     override fun initData() {
         super.initData()
-        toolbar.title = "动态"
+        toolbarTitle.text  = "动态"
         logoutButton.setOnClickListener {
             logout()
         }
+
+        addContact.visibility = View.GONE
     }
 
     private fun logout() {

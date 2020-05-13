@@ -48,6 +48,8 @@
 
         <activity android:name=".ui.activity.ChatActivity" />
 
+        <activity android:name=".ui.activity.AddFriendActivity" />
+
         <!-- 设置环信应用的AppKey -->
         <meta-data android:name="EASEMOB_APPKEY"  android:value="1117200513098439#imessenger" />
         <!-- 声明SDK所需的service SDK核心功能-->

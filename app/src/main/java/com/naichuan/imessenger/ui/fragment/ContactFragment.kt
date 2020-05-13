@@ -1,6 +1,7 @@
 package com.naichuan.imessenger.ui.fragment
 
 import android.graphics.Color
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hyphenate.EMContactListener
 import com.hyphenate.chat.EMClient
@@ -9,8 +10,11 @@ import com.naichuan.imessenger.adapter.ContactListAdapter
 import com.naichuan.imessenger.adapter.EMContactListenerAdapter
 import com.naichuan.imessenger.contract.ContactContract
 import com.naichuan.imessenger.presenter.ContactPresenter
+import com.naichuan.imessenger.ui.activity.AddFriendActivity
+import com.naichuan.imessenger.widget.SlideBar
 import kotlinx.android.synthetic.main.fragment_contact.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
 class ContactFragment: BaseFragment(), ContactContract.View {
@@ -23,7 +27,13 @@ class ContactFragment: BaseFragment(), ContactContract.View {
 
     override fun initData() {
         super.initData()
-        toolbar.title = "联系人"
+        toolbarTitle.text  = "联系人"
+
+        addContact.visibility = View.VISIBLE
+
+        addContact.setOnClickListener {
+            startActivity<AddFriendActivity>()
+        }
 
         swipeRefreshLayout.apply {
             setColorSchemeColors(Color.GREEN, Color.RED, Color.YELLOW)
@@ -46,8 +56,25 @@ class ContactFragment: BaseFragment(), ContactContract.View {
             }
         })
 
+        slideBar.onSectionChangeListener = object : SlideBar.OnSectionChangeListener {
+            override fun onSectionChanged(firstLetter: String) {
+                sectionTextView.visibility = View.VISIBLE
+                sectionTextView.text = firstLetter
+                recyclerView.smoothScrollToPosition(getPosition(firstLetter))
+            }
+
+            override fun onSlideFinished() {
+                sectionTextView.visibility = View.GONE
+            }
+        }
+
         presenter.loadContacts()
     }
+
+    private fun getPosition(firstLetter: String): Int =
+        presenter.contactListItems.binarySearch { contactListItem ->
+            contactListItem.firstLetter.minus(firstLetter[0])
+        }
 
     override fun onLoadContactSuccess() {
         swipeRefreshLayout.isRefreshing = false

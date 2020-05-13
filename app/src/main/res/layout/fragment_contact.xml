@@ -26,7 +26,18 @@
             android:id="@+id/slideBar"
             android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:background="#ff0000"
             android:layout_gravity="end" />
+
+        <TextView
+            android:id="@+id/sectionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:paddingTop="8dp"
+            android:background="#D3D3D3"
+            android:visibility="gone" />
+
     </FrameLayout>
 </LinearLayout>
