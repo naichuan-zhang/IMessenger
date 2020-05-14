@@ -5,3 +5,9 @@ fun String.isValidUsername(): Boolean
 
 fun String.isValidPassword(): Boolean
         = this.matches(Regex("^[a-zA-Z0-9]{3,20}$"))
+
+
+fun <K, V> MutableMap<K, V>.toVarargArray(): Array<Pair<K, V>> =
+    map {
+        Pair(it.key, it.value)
+    }.toTypedArray()

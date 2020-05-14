@@ -3,6 +3,7 @@ package com.naichuan.imessenger.ui.fragment
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.hyphenate.EMContactListener
 import com.hyphenate.chat.EMClient
 import com.naichuan.imessenger.R
@@ -14,6 +15,7 @@ import com.naichuan.imessenger.ui.activity.AddFriendActivity
 import com.naichuan.imessenger.widget.SlideBar
 import kotlinx.android.synthetic.main.fragment_contact.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.jetbrains.anko.support.v4.find
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 
@@ -54,6 +56,11 @@ class ContactFragment: BaseFragment(), ContactContract.View {
                 super.onContactDeleted(p0)
                 presenter.loadContacts()
             }
+
+            override fun onContactAdded(p0: String?) {
+                super.onContactAdded(p0)
+                presenter.loadContacts()
+            }
         })
 
         slideBar.onSectionChangeListener = object : SlideBar.OnSectionChangeListener {
@@ -77,13 +84,17 @@ class ContactFragment: BaseFragment(), ContactContract.View {
         }
 
     override fun onLoadContactSuccess() {
-        swipeRefreshLayout.isRefreshing = false
-        recyclerView.adapter?.notifyDataSetChanged()
-        toast("加载联系人数据成功！")
+        if (this.isAdded) {
+            swipeRefreshLayout?.isRefreshing = false
+            recyclerView?.adapter?.notifyDataSetChanged()
+            toast("加载联系人数据成功！")
+        }
     }
 
     override fun onLoadContactFailed() {
-        swipeRefreshLayout.isRefreshing = false
-        toast("加载联系人数据失败！")
+        if (this.isAdded) {
+            swipeRefreshLayout?.isRefreshing = false
+            toast("加载联系人数据失败！")
+        }
     }
 }
